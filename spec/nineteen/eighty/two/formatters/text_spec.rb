@@ -1,8 +1,6 @@
 module Nineteen::Eighty::Two
   module Formatters
     describe TextFormatter do
-      let(:s) { Spectrum.new }
-
       it 'gives the correct character' do
         expect(described_class.format 'a').to eq (
 """
