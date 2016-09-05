@@ -2,17 +2,15 @@ module Nineteen
   module Eighty
     module Two
       class Spectrum
-        def chars
-          @chars ||= YAML.load_file File.join File.dirname(__FILE__), '..', '..', '..', '..', 'config', 'characters.yml'
+        CHARACTERS = YAML.load_file File.join File.dirname(__FILE__), '..', '..', '..', '..', 'config', 'characters.yml'
+        
+        def self.[] text
+          Spectrum.linify text.chars.map { |c| Spectrum.get(c) }
         end
 
-        def [] key
-          Spectrum.linify key.chars.map { |c| get(c) }
-        end
-
-        def get key
-          key = ' ' unless chars[key]
-          chars[key].map { |b| Spectrum.bits(b) }
+        def self.get key
+          key = ' ' unless CHARACTERS[key]
+          CHARACTERS[key].map { |b| Spectrum.bits(b) }
         end
 
         def self.bits number

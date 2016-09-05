@@ -3,7 +3,7 @@ module Nineteen::Eighty::Two
     let(:s) { described_class.new }
 
     it 'has the correct keys and values' do
-      expect(s.chars['a']).to eq [0, 0, 56, 4, 60, 68, 60, 0]
+      expect(described_class::CHARACTERS['a']).to eq [0, 0, 56, 4, 60, 68, 60, 0]
     end
 
     it 'makes an array of bits' do
@@ -22,7 +22,7 @@ module Nineteen::Eighty::Two
     end
 
     it 'returns an array of arrays' do
-      expect(s[' ']).to eq [
+      expect(described_class[' ']).to eq [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
@@ -33,7 +33,7 @@ module Nineteen::Eighty::Two
         [0, 0, 0, 0, 0, 0, 0, 0]
       ]
 
-      expect(s['a']).to eq [
+      expect(described_class['a']).to eq [
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 1, 1, 1, 0, 0, 0],
@@ -46,7 +46,7 @@ module Nineteen::Eighty::Two
     end
 
     it 'returns the arrays for longer strings' do
-      expect(s['1982']).to eq [
+      expect(described_class['1982']).to eq [
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0],
         [0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0],
@@ -60,7 +60,7 @@ module Nineteen::Eighty::Two
 
     context 'edge cases' do
       it 'handles a non-existent key gracefully' do
-        expect(s['€']).to eq [
+        expect(described_class['€']).to eq [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0],
@@ -73,7 +73,7 @@ module Nineteen::Eighty::Two
       end
 
       it 'recognises a double-quote as a key' do
-        expect(s['"']).to eq [
+        expect(described_class['"']).to eq [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 1, 0, 0, 1, 0, 0],
           [0, 0, 1, 0, 0, 1, 0, 0],
@@ -86,7 +86,7 @@ module Nineteen::Eighty::Two
       end
 
       it 'knows what a forward-slash is' do
-        expect(s['/']).to eq [
+        expect(described_class['/']).to eq [
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 1, 0],
