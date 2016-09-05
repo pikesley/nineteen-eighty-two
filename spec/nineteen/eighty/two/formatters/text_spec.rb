@@ -32,6 +32,21 @@ module Nineteen::Eighty::Two
 """
 ).strip
       end
+
+      it 'returns characters other than zeroes and ones' do
+        expect(described_class.format 'Sam', {on: 'X', off: '.'}).to eq (
+"""
+........................
+..XXXX..................
+.X........XXX....XX.X...
+..XXXX.......X...X.X.X..
+......X...XXXX...X.X.X..
+.X....X..X...X...X.X.X..
+..XXXX....XXXX...X.X.X..
+........................
+"""
+).strip
+      end
     end
   end
 end
