@@ -1,6 +1,8 @@
-require "bundler/gem_tasks"
-require "rspec/core/rake_task"
+require 'bundler/gem_tasks'
+require 'rspec/core/rake_task'
+require 'coveralls/rake/task'
 
-RSpec::Core::RakeTask.new(:spec)
+Coveralls::RakeTask.new
+RSpec::Core::RakeTask.new
 
-task :default => :spec
+task :default => [:spec, 'coveralls:push']
