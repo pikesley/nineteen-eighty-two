@@ -4,10 +4,9 @@ module Nineteen
       module Formatters
         class JSONFormatter
           def self.format text
-            s = Spectrum.new
             {
               id: text,
-              data: s[text]
+              data: Spectrum[text]
             }.to_json
           end
         end
