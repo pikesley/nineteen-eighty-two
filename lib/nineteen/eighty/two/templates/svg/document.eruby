@@ -1,0 +1,12 @@
+<svg viewBox='0 0 <%= @width %> <%= @height %>' xmlns='http://www.w3.org/2000/svg'>
+  <style type='text/css'>
+    <![CDATA[
+      rect.on {
+        fill: <%= @fill_colour %>;
+      }
+    ]]>
+  </style>
+  <g>
+<%= @body %>
+  </g>
+</svg>

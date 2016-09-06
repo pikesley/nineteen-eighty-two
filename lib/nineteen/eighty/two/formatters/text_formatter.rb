@@ -2,7 +2,7 @@ module Nineteen
   module Eighty
     module Two
       module Formatters
-        class TextFormatter
+        class Text
           def self.format text, options = {}
             on = options.fetch(:on, '1')
             off = options.fetch(:off, '0')

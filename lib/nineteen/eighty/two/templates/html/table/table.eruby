@@ -1,0 +1,5 @@
+<!-- <%= @title %> -->
+<table class='sinclair'>
+<%= @blanks %>
+<%= @rows %>
+</table>
