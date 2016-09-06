@@ -1,5 +1,5 @@
 module Nineteen::Eighty::Two
-  module Formatters
+  module Formats
     describe HTMLTable do
       it 'makes a cell' do
         expect(described_class.cell(Span.new 0, 1)).to eq "<td class='off'> </td>"
@@ -30,6 +30,8 @@ module Nineteen::Eighty::Two
 <tr><td class='off' colspan='8'> </td></tr>
 </table>"""
         )
+
+        expect(described_class.format 'ab').to match /<td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td>/
       end
     end
   end

@@ -1,5 +1,5 @@
 module Nineteen::Eighty::Two
-  module Formatters
+  module Formats
     describe Text do
       it 'gives the correct character' do
         expect(described_class.format 'a').to eq (

@@ -1,7 +1,7 @@
 module Nineteen
   module Eighty
     module Two
-      module Formatters
+      module Formats
         class HTMLTable
           def self.format text
             lines = Spectrum[text]
@@ -9,7 +9,7 @@ module Nineteen
             t = File.read File.open File.join templates_dir, 'table.eruby'
             context = {
               title: text,
-              blanks: blanks(lines),
+              blanks: blanks(lines.first),
               rows: lines.map { |l| row(l) }.join("\n")
             }
             Erubis::Eruby.new(t).evaluate(context).strip

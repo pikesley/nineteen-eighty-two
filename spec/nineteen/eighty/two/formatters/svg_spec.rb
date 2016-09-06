@@ -1,5 +1,5 @@
 module Nineteen::Eighty::Two
-  module Formatters
+  module Formats
     describe SVG do
       it 'formats a row' do
         expect(described_class.row [0, 0, 0, 0, 0, 0, 0, 0]).to eq ""

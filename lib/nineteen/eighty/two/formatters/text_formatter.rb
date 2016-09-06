@@ -1,7 +1,7 @@
 module Nineteen
   module Eighty
     module Two
-      module Formatters
+      module Formats
         class Text
           def self.format text, options = {}
             on = options.fetch(:on, '1')

@@ -1,5 +1,5 @@
 module Nineteen::Eighty::Two
-  module Formatters
+  module Formats
     describe JSON do
       it 'returns JSON' do
         expect(described_class.format ' ').to eq ({

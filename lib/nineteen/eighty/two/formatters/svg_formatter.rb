@@ -1,7 +1,7 @@
 module Nineteen
   module Eighty
     module Two
-      module Formatters
+      module Formats
         class SVG
           def self.format text, options = {}
             t = File.read File.open File.join templates_dir, 'document.eruby'
