@@ -99,4 +99,13 @@ module Nineteen::Eighty::Two
       end
     end
   end
+  
+  describe Span do
+    it 'has sensible accessors' do
+      s = Span.new 'foo', 19
+
+      expect(s.type).to eq 'foo'
+      expect(s.width).to eq 19
+    end
+  end
 end

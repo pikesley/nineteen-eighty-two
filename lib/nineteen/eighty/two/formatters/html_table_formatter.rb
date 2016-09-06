@@ -1,55 +1,47 @@
 module Nineteen
   module Eighty
     module Two
-      module Formatters
-        class HTMLTableFormatter
+      module Formats
+        class HTMLTable
           def self.format text
-            s = '<!-- %s -->' % text
-            s << '<table class="sinclair">'
-
             lines = Spectrum[text]
-            s << self.build_row(self.make_blanks(lines.first))
 
-            lines.each { |line| s << self.build_row(Nineteen::Eighty::Two::Decorators::RunLengthEncoder.encode line) }
-
-            s << '</table>'
-            s
-          end
-
-          def self.make_blanks text
-            a = []
-            (text.length * 8).times do |bit|
-              a << { 0 => 1 }
-            end
-
-            a
-          end
-
-          def self.convert_line line
-            line.map! { |i|
-              {
-                :class   => i.keys[0] == 1 ? "on" : "off",
-                :colspan => i.values[0]
-              }
+            t = File.read File.open File.join templates_dir, 'table.eruby'
+            context = {
+              title: text,
+              blanks: blanks(lines.first),
+              rows: lines.map { |l| row(l) }.join("\n")
             }
+            Erubis::Eruby.new(t).evaluate(context).strip
           end
 
-          def self.build_row line
-            s = '<tr class="sinclair">'
+          def self.blanks lines
+            t = File.read File.open File.join templates_dir, 'row.eruby'
+            context = {
+              cells: lines.map { |b| cell Span.new(0, 1) }.join
+            }
+            Erubis::Eruby.new(t).evaluate(context).strip
+          end
 
-            convert_line line
+          def self.cell span
+            t = File.read File.open File.join templates_dir, 'cell.eruby'
+            context = {
+              style: span.type == 1 ? 'on' : 'off',
+            }
+            context[:colspan] = span.width if span.width > 1
+            Erubis::Eruby.new(t).evaluate(context).strip
+          end
 
-            line.each do |bit|
-              s << '<td class="%s"' % bit[:class]
-              if bit[:colspan] > 1
-                s << ' colspan="%d"' % bit[:colspan]
-              end
-              s << '> </td>'
-            end
+          def self.row list
+            t = File.read File.open File.join templates_dir, 'row.eruby'
+            context = {
+              cells: Decorators::RunLengthEncoder.encode(list).map { |i| cell i }.join
+            }
+            Erubis::Eruby.new(t).evaluate(context).strip
+          end
 
-            s << '</tr>'
-
-            s
+          def self.templates_dir
+            File.join File.dirname(__FILE__),'..', 'templates', 'html', 'table'
           end
         end
       end

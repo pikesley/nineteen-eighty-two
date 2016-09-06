@@ -1,6 +1,6 @@
 module Nineteen::Eighty::Two
-  module Formatters
-    describe TextFormatter do
+  module Formats
+    describe Text do
       it 'gives the correct character' do
         expect(described_class.format 'a').to eq (
 """
@@ -11,6 +11,21 @@ module Nineteen::Eighty::Two
 00111100
 01000100
 00111100
+00000000
+"""
+).strip
+      end
+
+      it 'gives the correct character' do
+        expect(described_class.format '/').to eq (
+"""
+00000000
+00000000
+00000010
+00000100
+00001000
+00010000
+00100000
 00000000
 """
 ).strip

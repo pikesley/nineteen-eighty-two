@@ -1,8 +1,8 @@
 module Nineteen
   module Eighty
     module Two
-      module Formatters
-        class JSONFormatter
+      module Formats
+        class JSON
           def self.format text
             {
               id: text,

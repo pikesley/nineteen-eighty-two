@@ -14,9 +14,7 @@ module Nineteen
               if nxt == current
                 count += 1
               else
-                result << {
-                  current => count + 1
-                }
+                result << (Span.new current, count + 1)
                 count = 0
                 current = nxt
               end
