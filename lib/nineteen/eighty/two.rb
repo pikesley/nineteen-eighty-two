@@ -35,3 +35,9 @@ module Nineteen
     end
   end
 end
+
+class Array
+  def longest
+    self.map { |i| i.length }.max
+  end
+end
