@@ -6,7 +6,7 @@ module Nineteen
           def self.format text
             lines = Spectrum[text]
 
-            t = File.read File.open File.join templates_dir, 'table.eruby'
+            t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'html', 'table', 'table.eruby'
             context = {
               title: text,
               blanks: blanks(lines.first),
@@ -16,7 +16,7 @@ module Nineteen
           end
 
           def self.blanks lines
-            t = File.read File.open File.join templates_dir, 'row.eruby'
+            t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'html', 'table', 'row.eruby'
             context = {
               cells: lines.map { |b| cell Span.new(0, 1) }.join
             }
@@ -24,7 +24,7 @@ module Nineteen
           end
 
           def self.cell span
-            t = File.read File.open File.join templates_dir, 'cell.eruby'
+            t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'html', 'table', 'cell.eruby'
             context = {
               style: span.type == 1 ? 'on' : 'off',
             }
@@ -33,15 +33,11 @@ module Nineteen
           end
 
           def self.row list
-            t = File.read File.open File.join templates_dir, 'row.eruby'
+            t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'html', 'table', 'row.eruby'
             context = {
               cells: Decorators::RunLengthEncoder.encode(list).map { |i| cell i }.join
             }
             Erubis::Eruby.new(t).evaluate(context).strip
-          end
-
-          def self.templates_dir
-            File.join File.dirname(__FILE__),'..', 'templates', 'html', 'table'
           end
         end
       end

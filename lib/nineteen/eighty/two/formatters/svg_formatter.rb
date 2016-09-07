@@ -4,7 +4,7 @@ module Nineteen
       module Formats
         class SVG
           def self.format text, options = {}
-            t = File.read File.open File.join templates_dir, 'document.eruby'
+            t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'svg', 'document.eruby'
             context = {
               width: text.length * 8,
               height: 8,
@@ -27,7 +27,7 @@ module Nineteen
             cells = []
             Decorators::RunLengthEncoder.encode(list).each do |item|
               if item.type == 1
-                t = File.read File.open File.join templates_dir, 'cell.eruby'
+                t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'svg', 'cell.eruby'
                 context = {
                   x: x,
                   y: index,
@@ -41,10 +41,6 @@ module Nineteen
             end
 
             cells.join("\n").strip
-          end
-
-          def self.templates_dir
-            File.join File.dirname(__FILE__),'..', 'templates', 'svg'
           end
         end
       end

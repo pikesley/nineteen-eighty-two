@@ -12,16 +12,26 @@ require 'nineteen/eighty/two/formatters/json_formatter'
 require 'nineteen/eighty/two/formatters/html_table_formatter'
 require 'nineteen/eighty/two/formatters/svg_formatter'
 
-class Span < Hash
-  def initialize type, width
-    self[type] = width
-  end
+module Nineteen
+  module Eighty
+    module Two
+      class Span < Hash
+        def initialize type, width
+          self[type] = width
+        end
 
-  def type
-    self.keys.first
-  end
+        def type
+          self.keys.first
+        end
 
-  def width
-    self.values.first
+        def width
+          self.values.first
+        end
+      end
+
+      def self.templates_dir
+        File.join File.dirname(__FILE__), 'two', 'templates'
+      end
+    end
   end
 end
