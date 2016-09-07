@@ -5,9 +5,9 @@
 [![Gem Version](http://img.shields.io/gem/v/nineteen-eighty-two.svg?style=flat-square)](https://rubygems.org/gems/nineteen-eighty-two)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://pikesley.mit-license.org)
 
-#1982
+# 1982
 
-##Sinclair Spectrum font as a Rubygem
+## Sinclair Spectrum font as a Rubygem
 
 A massively over-engineered solution to a problem that I'm almost 100% certain does not exist - rendering text in the 1982 Sinclair Spectrum character set, in a variety of formats
 
@@ -20,13 +20,13 @@ Or just
 
     gem install nineteen-eighty-two
 
-##API
+## API
 
 From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spec/nineteen/eighty/two):
 
-###Just the data
+### Just the data
 
-####Get a string as an array-of-arrays of bits
+#### Get a string as an array-of-arrays of bits
 
     require 'nineteen/eighty/two'
 
@@ -47,9 +47,9 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-###Specific output formats
+### Specific output formats
 
-####Get HTML
+#### Get HTML
 
     require 'nineteen/eighty/two'
 
@@ -75,7 +75,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-####Get JSON
+#### Get JSON
 
     require 'nineteen/eighty/two'
 
@@ -99,7 +99,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-####Get SVG
+#### Get SVG
 
     require 'nineteen/eighty/two'
 
@@ -134,7 +134,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-####Get text
+#### Get text
 
     require 'nineteen/eighty/two'
 
@@ -173,22 +173,22 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-##FAQ
+## FAQ
 
 Your questions, answered
 
-###Why the stupid module structure?
+### Why the stupid module structure?
 
 I realise that `Nineteen::Eighty::Two::Formats::HTMLTable.format` is a ludicrously long method name, but it turns out if you do `bundle gem nineteen-eighty-two`, this module hierarchy is what you're presented with, and I actually kind of like it (I did try to call it `1982` but apparently that's not a kosher Gem name)
 
-###Why doesn't it output in $other_format
+### Why doesn't it output in $other_format
 
 If you can think of another format I could support, let me know and I'll have a go. I am also [open to PRs](https://github.com/pikesley/nineteen-eighty-two/pulls), of course
 
-###Where can I play with this?
+### Where can I play with this?
 
 I've wrapped this Gem in a RESTful API [over here](http://uncleclive.herokuapp.com/)
 
-###Why have you done this?
+### Why have you done this?
 
 Have you met me? Also, because I'm [moderately obsessed with this font](https://www.youtube.com/watch?v=Qt_J0jNqtZg)
