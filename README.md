@@ -26,7 +26,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
 
 ### Just the data
 
-#### Get a string as an array-of-arrays of bits
+#### Transform a string into an array-of-arrays of bits
 
     require 'nineteen/eighty/two'
 
@@ -49,7 +49,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
 
 ### Specific output formats
 
-#### Get HTML
+#### HTML table
 
     require 'nineteen/eighty/two'
 
@@ -75,7 +75,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-#### Get JSON
+#### JSON
 
     require 'nineteen/eighty/two'
 
@@ -99,7 +99,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-#### Get SVG
+#### SVG
 
     require 'nineteen/eighty/two'
 
@@ -134,7 +134,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-#### Get text
+#### Text
 
     require 'nineteen/eighty/two'
 
