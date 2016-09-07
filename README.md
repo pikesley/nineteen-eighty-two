@@ -181,7 +181,7 @@ Your questions, answered
 
 I realise that `Nineteen::Eighty::Two::Formats::HTMLTable.format` is a ludicrously long method name, but it turns out if you do `bundle gem nineteen-eighty-two`, this module hierarchy is what you're presented with, and I actually kind of like it (I did try to call it `1982` but apparently that's not a kosher Gem name)
 
-### Why doesn't it output in $other_format
+### Why doesn't it output in _${other_format}_
 
 If you can think of another format I could support, let me know and I'll have a go. I am also [open to PRs](https://github.com/pikesley/nineteen-eighty-two/pulls), of course
 
