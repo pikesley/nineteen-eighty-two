@@ -36,6 +36,10 @@ module Nineteen::Eighty::Two
 </svg>
 """)
       end
+
+      it 'sets the colour' do
+        expect(described_class.format '/', {colour: '#fa8100'}).to match /fill: #fa8100;/
+      end
     end
   end
 end

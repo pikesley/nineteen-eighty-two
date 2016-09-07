@@ -8,7 +8,7 @@ module Nineteen
             context = {
               width: text.length * 8,
               height: 8,
-              fill_colour: options.fetch(:on_colour, '#000000'),
+              fill_colour: options.fetch(:colour, '#000000'),
               body: body(text)
             }
             Erubis::Eruby.new(t).evaluate(context)
