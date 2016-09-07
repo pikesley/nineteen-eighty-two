@@ -1,7 +1,5 @@
 module Nineteen::Eighty::Two
   describe Spectrum do
-    let(:s) { described_class.new }
-
     it 'has the correct keys and values' do
       expect(described_class::CHARACTERS['a']).to eq [0, 0, 56, 4, 60, 68, 60, 0]
     end
@@ -42,6 +40,17 @@ module Nineteen::Eighty::Two
         [0, 1, 0, 0, 0, 1, 0, 0],
         [0, 0, 1, 1, 1, 1, 0, 0],
         [0, 0, 0, 0, 0, 0, 0, 0]
+      ]
+
+      expect(described_class['ab']).to eq [
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0],
+        [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        [0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0],
+        [0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
       ]
     end
 
@@ -99,7 +108,7 @@ module Nineteen::Eighty::Two
       end
     end
   end
-  
+
   describe Span do
     it 'has sensible accessors' do
       s = Span.new 'foo', 19
