@@ -118,3 +118,9 @@ module Nineteen::Eighty::Two
     end
   end
 end
+
+describe Array do
+  it 'finds the longest string' do
+    expect(['foo', 'bar', 'long', 'baz'].longest).to eq 4
+  end
+end
