@@ -26,5 +26,12 @@ module Nineteen::Eighty::Two
     it 'translates numbers' do
       expect(described_class.seven).to eq '7 - RETURN without GO SUB'
     end
+
+    it 'returns all the messages' do
+      messages = described_class.to_h
+      expect(messages).to be_a Hash
+      expect(messages.keys.count).to eq 28
+      expect(messages.keys.last).to eq 'R' 
+    end
   end
 end

@@ -10,6 +10,10 @@ module Nineteen
           "#{key} - #{MESSAGES[key]}"
         end
 
+        def self.to_h
+          MESSAGES
+        end
+
         def self.method_missing m, *args
           key = case m
           when :zero
