@@ -4,11 +4,11 @@ module Nineteen
       module Formats
         class HTMLTable
           def self.format text
-            lines = Spectrum[text]
+            lines = Spectrum[*text]
 
             t = File.read File.open File.join Nineteen::Eighty::Two.templates_dir, 'html', 'table', 'table.eruby'
             context = {
-              title: text,
+              title: text.to_s.gsub('"', ''),
               blanks: blanks(lines.first),
               rows: lines.map { |l| row(l) }.join("\n")
             }

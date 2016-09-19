@@ -3,9 +3,15 @@ module Nineteen
     module Two
       class Spectrum
         CHARACTERS = YAML.load_file File.join File.dirname(__FILE__), '..', '..', '..', '..', 'config', 'characters.yml'
-        
-        def self.[] text
-          Spectrum.linify text.chars.map { |c| Spectrum.get(c) }
+
+        def self.[] *text
+        #  require "pry" ; binding.pry
+          a = []
+          text.each do |t|
+            a += Spectrum.linify(t.chars.map { |c| Spectrum.get(c) })
+          end
+
+          a
         end
 
         def self.get key

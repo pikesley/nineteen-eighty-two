@@ -5,8 +5,8 @@ module Nineteen
         class JSON
           def self.format text
             {
-              id: text,
-              data: Spectrum[text]
+              id: text.to_s.gsub('"', ''),
+              data: Spectrum[*text]
             }.to_json
           end
         end

@@ -17,16 +17,13 @@ module Nineteen
           end
 
           def self.body text
-            s = ''
+            rows = []
             text.each_with_index do |line, count|
-              rows = []
               Spectrum[line].each_with_index do |line, index|
                 rows.push row(line, index + (count * 8))
               end
-              s << rows.join("\n")
             end
-
-            s.strip
+            rows.flatten
           end
 
           def self.row list, index = 0
@@ -42,12 +39,12 @@ module Nineteen
                   height: 1,
                   style: 'on'
                 }
-                cells.push Erubis::Eruby.new(t).evaluate(context)
+                cells.push Erubis::Eruby.new(t).evaluate(context).strip
               end
               x += item.width
             end
 
-            cells.join("\n").strip
+            cells
           end
 
           def self.longest list

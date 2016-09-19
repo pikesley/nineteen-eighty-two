@@ -33,6 +33,31 @@ module Nineteen::Eighty::Two
 
         expect(described_class.format 'ab').to match /<td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td><td class='off'> <\/td>/
       end
+
+      it 'makes a multi-line table' do
+        expect(described_class.format ['a', 'b']).to eq (
+        """<!-- [a, b] -->
+<table class='sinclair'>
+<tr><td class='off'> </td><td class='off'> </td><td class='off'> </td><td class='off'> </td><td class='off'> </td><td class='off'> </td><td class='off'> </td><td class='off'> </td></tr>
+<tr><td class='off' colspan='8'> </td></tr>
+<tr><td class='off' colspan='8'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on' colspan='3'> </td><td class='off' colspan='3'> </td></tr>
+<tr><td class='off' colspan='5'> </td><td class='on'> </td><td class='off' colspan='2'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on' colspan='4'> </td><td class='off' colspan='2'> </td></tr>
+<tr><td class='off'> </td><td class='on'> </td><td class='off' colspan='3'> </td><td class='on'> </td><td class='off' colspan='2'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on' colspan='4'> </td><td class='off' colspan='2'> </td></tr>
+<tr><td class='off' colspan='8'> </td></tr>
+<tr><td class='off' colspan='8'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on'> </td><td class='off' colspan='5'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on'> </td><td class='off' colspan='5'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on' colspan='4'> </td><td class='off' colspan='2'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on'> </td><td class='off' colspan='3'> </td><td class='on'> </td><td class='off'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on'> </td><td class='off' colspan='3'> </td><td class='on'> </td><td class='off'> </td></tr>
+<tr><td class='off' colspan='2'> </td><td class='on' colspan='4'> </td><td class='off' colspan='2'> </td></tr>
+<tr><td class='off' colspan='8'> </td></tr>
+</table>"""
+        )
+      end
     end
   end
 end

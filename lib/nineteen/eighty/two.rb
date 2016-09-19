@@ -4,6 +4,9 @@ require 'erubis'
 
 require 'nineteen/eighty/two/version'
 require 'nineteen/eighty/two/spectrum'
+require 'nineteen/eighty/two/messages'
+require 'nineteen/eighty/two/colours'
+require 'nineteen/eighty/two/exceptions'
 
 require 'nineteen/eighty/two/decorators/run_length_encoder'
 

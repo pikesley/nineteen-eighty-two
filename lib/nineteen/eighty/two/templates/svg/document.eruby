@@ -7,6 +7,6 @@
     ]]>
   </style>
   <g>
-<%= @body %>
+<%= @body.map { |b| "    #{b}" }.join "\n" %>
   </g>
 </svg>
