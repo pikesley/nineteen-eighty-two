@@ -34,6 +34,29 @@ module Nineteen::Eighty::Two
       end
     end
 
+    it 'returns all the colours' do
+      expect(described_class.to_h).to eq (
+        {
+          BLACK: "000000",
+          black: "000000",
+          BLUE: "0000ff",
+          blue: "0000bf",
+          CYAN: "00ffff",
+          cyan: "00bfbf",
+          GREEN: "00ff00",
+          green: "00bf00",
+          MAGENTA: "ff00ff",
+          magenta: "bf00bf",
+          RED: "ff0000",
+          red: "bf0000",
+          WHITE: "ffffff",
+          white: "bfbfbf",
+          YELLOW: "ffff00",
+          yellow: "bfbf00"
+        }
+      )
+    end
+
     context 'method-type access' do
       it 'allows method-type access' do
         expect(described_class.blue).to eq '0000bf'

@@ -20,6 +20,16 @@ module Nineteen
           hex
         end
 
+        def self.to_h
+          h = {}
+          self.constants[1..-1].sort.each do |c|
+            h[c] = self[c]
+            h[c.downcase] = self[c.downcase]
+          end
+
+          h
+        end
+
         def self.method_missing m, *args
           self[m]
         end
