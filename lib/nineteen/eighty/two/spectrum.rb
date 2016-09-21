@@ -5,13 +5,22 @@ module Nineteen
         CHARACTERS = YAML.load_file File.join File.dirname(__FILE__), '..', '..', '..', '..', 'config', 'characters.yml'
 
         def self.[] *text
-        #  require "pry" ; binding.pry
           a = []
           text.each do |t|
             a += Spectrum.linify(t.chars.map { |c| Spectrum.get(c) })
           end
 
           a
+        end
+
+        def self.to_h
+          h = {}
+
+          CHARACTERS.keys.each do |c|
+            h[c.to_sym] = get(c)
+          end
+
+          h
         end
 
         def self.get key
