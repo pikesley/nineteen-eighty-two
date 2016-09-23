@@ -15,10 +15,13 @@ A massively over-engineered solution to a set of problems that I'm almost 100% c
 * serving all of the Spectrum's 15 colours as HTML hex colours
 * serving the complete set of Spectrum error messages
 
+## Install
+
     git clone https://github.com/pikesley/nineteen-eighty-two
     cd nineteen-eighty-two
     bundle
     rake
+    rake install
 
 Or just
 
