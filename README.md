@@ -7,9 +7,13 @@
 
 # 1982
 
-## Sinclair Spectrum font as a Rubygem
+## Sinclair Spectrum Stuff as a Rubygem
 
-A massively over-engineered solution to a problem that I'm almost 100% certain does not exist - rendering text in the 1982 Sinclair Spectrum character set, in a variety of formats
+A massively over-engineered solution to a set of problems that I'm almost 100% certain do not exist
+
+* rendering text in the 1982 Sinclair Spectrum character set, in a variety of formats
+* serving all of the Spectrum's 15 colours as HTML hex colours
+* serving the complete set of Spectrum error messages
 
     git clone https://github.com/pikesley/nineteen-eighty-two
     cd nineteen-eighty-two
@@ -22,11 +26,13 @@ Or just
 
 ## API
 
+### Font
+
 From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spec/nineteen/eighty/two):
 
-### Just the data
+#### Just the data
 
-#### Transform a string into an array-of-arrays of bits
+##### Transform a string into an array-of-arrays of bits
 
     require 'nineteen/eighty/two'
 
@@ -47,9 +53,9 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-### Specific output formats
+#### Specific output formats
 
-#### HTML table
+##### HTML table
 
     require 'nineteen/eighty/two'
 
@@ -75,7 +81,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-#### JSON
+##### JSON
 
     require 'nineteen/eighty/two'
 
@@ -99,7 +105,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-#### SVG
+##### SVG
 
     require 'nineteen/eighty/two'
 
@@ -134,7 +140,7 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
       end
     end
 
-#### Text
+##### Text
 
     require 'nineteen/eighty/two'
 
@@ -169,6 +175,57 @@ From the [specs](https://github.com/pikesley/nineteen-eighty-two/tree/master/spe
             ........................
             """
             ).strip
+        end
+      end
+    end
+
+### Colours
+
+    require 'nineteen/eighty/two'
+
+    module Nineteen::Eighty::Two
+      describe Colours do
+        it 'knows what red is' do
+          expect(described_class['red']).to eq 'bf0000'
+        end
+
+        it 'knows how to make magenta' do
+          expect(described_class['magenta']).to eq 'bf00bf'
+        end
+
+        context 'BRIGHT colours' do
+          specify 'primary colours' do
+            expect(described_class['GREEN']).to eq '00ff00'
+          end
+        end
+
+        context 'method-type access' do
+          it 'allows method-type access' do
+            expect(described_class.blue).to eq '0000bf'
+          end
+        end
+      end
+    end
+
+### Error messages
+
+    require 'nineteen/eighty/two'
+
+    module Nineteen::Eighty::Two
+      describe Messages do
+        it 'has error messages' do
+          expect(described_class['R']).to eq 'R - Tape loading error'
+        end
+
+        it 'supports case-insensitive lookups' do
+          expect(described_class['c']).to eq 'C - Nonsense in BASIC'
+        end
+
+        it 'is polite about non-existent keys' do
+          expect { described_class['Z'] }.to raise_exception do |e|
+            expect(e).to be_an Exceptions::SpectrumException
+            expect(e.message).to eq 'Q - Parameter error'
+          end
         end
       end
     end
