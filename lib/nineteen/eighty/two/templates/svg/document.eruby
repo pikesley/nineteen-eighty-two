@@ -1,4 +1,5 @@
-<svg viewBox='0 0 <%= @width %> <%= @height %>' xmlns='http://www.w3.org/2000/svg'>
+<svg <% if @class %>class='<%= @class %>' <% end %>viewBox='0 0 <%= @width %> <%= @height %>' xmlns='http://www.w3.org/2000/svg'>
+  <% if @fill_colour %>
   <style type='text/css'>
     <![CDATA[
       rect.on {
@@ -6,6 +7,7 @@
       }
     ]]>
   </style>
+  <% end %>
   <g>
 <%= @body.map { |b| "    #{b}" }.join "\n" %>
   </g>
