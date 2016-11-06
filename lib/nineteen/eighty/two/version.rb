@@ -1,7 +1,7 @@
 module Nineteen
   module Eighty
     module Two
-      VERSION = "0.1.7"
+      VERSION = "0.1.8"
     end
   end
 end

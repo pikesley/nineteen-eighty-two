@@ -30,13 +30,6 @@ module Nineteen::Eighty::Two
       it 'returns an SVG' do
         expect(described_class.format '/').to eq (
 """<svg viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'>
-  <style type='text/css'>
-    <![CDATA[
-      rect.on {
-        fill: #000000;
-      }
-    ]]>
-  </style>
   <g>
     <rect x='6' y='2' width='1' height='1' class='on' />
     <rect x='5' y='3' width='1' height='1' class='on' />
@@ -49,7 +42,7 @@ module Nineteen::Eighty::Two
       end
 
       it 'returns a multi-line SVG' do
-        expect(described_class.format ['1', '2']).to eq (
+        expect(described_class.format ['1', '2'], {colour: '#000000'}).to eq (
 """<svg viewBox='0 0 8 16' xmlns='http://www.w3.org/2000/svg'>
   <style type='text/css'>
     <![CDATA[
@@ -81,6 +74,22 @@ module Nineteen::Eighty::Two
 
       it 'sets the colour' do
         expect(described_class.format '/', {colour: '#fa8100'}).to match /fill: #fa8100;/
+      end
+
+      context 'set options' do
+        it 'sets a class' do
+          expect(described_class.format '/', {class: 'title'}).to eq (
+"""<svg class='title' viewBox='0 0 8 8' xmlns='http://www.w3.org/2000/svg'>
+  <g>
+    <rect x='6' y='2' width='1' height='1' class='on' />
+    <rect x='5' y='3' width='1' height='1' class='on' />
+    <rect x='4' y='4' width='1' height='1' class='on' />
+    <rect x='3' y='5' width='1' height='1' class='on' />
+    <rect x='2' y='6' width='1' height='1' class='on' />
+  </g>
+</svg>
+""")
+        end
       end
     end
   end
