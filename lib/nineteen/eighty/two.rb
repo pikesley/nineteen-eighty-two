@@ -1,6 +1,7 @@
 require 'yaml'
 require 'matrix'
 require 'erubis'
+require 'json'
 
 require 'nineteen/eighty/two/version'
 require 'nineteen/eighty/two/spectrum'
